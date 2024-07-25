@@ -13,8 +13,8 @@ import lombok.ToString;
 public class Procurador {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", length = 45)
-    private String id;
+    @Column(name="id")
+    private int id;
 
     @Column(name="p_name", length = 255)
     private String name;
@@ -32,7 +32,7 @@ public class Procurador {
      * @param email
      * @param password
      */
-    public Procurador(String id, String name, String email, String password){
+    public Procurador(int id, String name, String email, String password){
         this.id = id;
         this.name = name;
         this.email = email;
@@ -43,7 +43,7 @@ public class Procurador {
      * Método get para o atributo procurador_id
      * @return
      */
-    public String getProcuradorid(){
+    public int getProcuradorid(){
         return this.id;
     }
 
