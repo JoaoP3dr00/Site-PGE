@@ -56,22 +56,22 @@ function Login() {
         <div class="col-sm-6">
           <form>
             <div class="form-group">
-              <label>Email</label>
-              <input type="email"  class="form-control" id="email" placeholder="Enter Name"
-              value={p_email}
-              onChange={(event) => {
-                setProcuradoremail(event.target.value);
-              }}
+              <label>Email:</label>
+              <input type="email"  class="form-control" id="email" placeholder="Digite seu email..."
+                value={p_email}
+                onChange={(event) => {
+                  setProcuradoremail(event.target.value);
+                }}
               />
             </div>
 
             <div class="form-group">
-              <label>password</label>
-              <input type="password"  class="form-control" id="password" placeholder="Enter Fee"
-              value={p_password}
-              onChange={(event) => {
-                setProcuradorpassword(event.target.value);
-              }}
+              <label>Senha:</label>
+              <input type="password" class="form-control" id="password" placeholder="Digite sua senha..."
+                value={p_password}
+                onChange={(event) => {
+                  setProcuradorpassword(event.target.value);
+                }}
               />
             </div>
             <button type="submit" class="btn btn-primary" onClick={login} >Login</button>
