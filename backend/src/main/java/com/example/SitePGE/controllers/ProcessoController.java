@@ -19,34 +19,29 @@ import com.example.SitePGE.service.ProcessoService;
 
 
 @RestController
-@RequestMapping("SitePGE/api/home")
+@RequestMapping("SitePGE/api/home/processos")
 public class ProcessoController {
    @Autowired
    private ProcessoService processoService;
 
-
    @Autowired
    private ProcessoRepo processoRepo;
 
-
    @PostMapping(path="/registrar-processo")
    public ResponseEntity<?> registerProcess(@RequestBody Processo processo){
-       String nome = processoService.addProcesso(processo);
-       return ResponseEntity.ok("Processo " + nome + "registrado com sucesso!");
+       String numero = processoService.addProcesso(processo);
+       return ResponseEntity.ok("Processo de numero " + numero + " registrado com sucesso!");
    }
-
 
    @PostMapping(path="/procurar-processo-por-numero")
    public List<Processo> procurarProcesso(@RequestParam(required = false) String numeroProcesso){
        List<Processo> listaProcessos;
-
 
        if(numeroProcesso == null || numeroProcesso.trim().isEmpty()){
            listaProcessos = processoRepo.findAll();
        } else {
            listaProcessos = processoRepo.findByNumeroProcessoContainingIgnoreCase(numeroProcesso);  
        }
-
 
        return listaProcessos;
    }

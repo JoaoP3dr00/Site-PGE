@@ -1,15 +1,8 @@
 package com.example.SitePGE.entities;
 
 import java.sql.Date;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import java.util.List;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
@@ -54,6 +47,9 @@ public class Processo {
 
     @Column(name="descricao")
     private String descricao;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "processo")
+    private List<Movimentacao> movimentacoes;
 
     public Processo(int id, String numeroProcesso, String valorDivida, String juiz, String vara, String executado, Date dataDistribuicao, Date dataPrescricao, String statusPrescricao, String tipoAssunto, String descricao) {
         this.id = id;
@@ -111,6 +107,10 @@ public class Processo {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public List<Movimentacao> getMovimentacoes() {
+        return movimentacoes;
     }
 
     @Override
