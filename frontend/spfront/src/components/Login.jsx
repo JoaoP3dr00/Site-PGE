@@ -26,7 +26,7 @@ function Login() {
             else if(res.data.message === "Login efetuado com sucesso!")
             { 
             alert("HOME");
-            //navigate('/home');
+              navigate('/home');
             } 
             else 
             { 
@@ -37,8 +37,6 @@ function Login() {
           }
         );
       }
-
-
         catch (err) {
         alert(err);
       }

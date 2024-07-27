@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import React from "react";
 
 function Home() {
     const [buscaProcessos, setBuscaProcessos] = useState("");
     const [processos, setProcessos] = useState([]);
+    const navigate = useNavigate();
 
     async function getProcessos(event) {
         event.preventDefault();
@@ -20,6 +22,8 @@ function Home() {
             alert(err);
         }
     }
+
+    const path = "/process/"+buscaProcessos;
 
     return (
         <div className="container">
@@ -38,7 +42,9 @@ function Home() {
                 <h4>Processos</h4>  
                 <div>
                     {processos.map((processo) => (
-                        <li key={processo.id}>{processo.numeroProcesso}</li>
+                        <li key={processo.id}>
+                            <button className= "btn btn-primary" type="submit" onClick={() => {navigate(path);}}>Processo número: {processo.numeroProcesso}</button>
+                        </li>
                     ))}
                 </div>
             </ol>
