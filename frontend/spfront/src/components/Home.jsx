@@ -23,8 +23,6 @@ function Home() {
         }
     }
 
-    const path = "/process/"+buscaProcessos;
-
     return (
         <div className="container">
             <h1>Home</h1>
@@ -43,7 +41,7 @@ function Home() {
                 <div>
                     {processos.map((processo) => (
                         <li key={processo.id}>
-                            <button className= "btn btn-primary" type="submit" onClick={() => {navigate(path);}}>Processo número: {processo.numeroProcesso}</button>
+                            <button className= "btn btn-primary" type="submit" onClick={() => {navigate("/process/"+processo.numeroProcesso);}}>Processo número: {processo.numeroProcesso}</button>
                         </li>
                     ))}
                 </div>
