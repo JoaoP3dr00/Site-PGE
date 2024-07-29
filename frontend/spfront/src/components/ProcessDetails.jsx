@@ -4,15 +4,20 @@ import { useParams } from "react-router-dom";
 
 function Process() {
     const [processo, setProcesso] = useState({});
+    const AuthStr = "Bearer ".concat(localStorage.getItem('token').replace(/"/g, '')); 
     const { id } = useParams("");
 
     useEffect(() => {
         async function getData() {
             try {
                 const response = await axios.get("http://localhost:8080/SitePGE/api/home/processos/processo", {
+                    headers: {Authorization: AuthStr},
                     params: { numeroProcesso: id }
                 });
-                setProcesso(response.data);
+                if(response.status === 200)
+                    setProcesso(response.data);
+                else
+                    alert(response.status);
             } catch (error) {
                 console.error(error);
             }
