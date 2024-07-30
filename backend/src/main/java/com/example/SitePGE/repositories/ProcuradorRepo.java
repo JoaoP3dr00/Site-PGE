@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface ProcuradorRepo extends JpaRepository<Procurador, Integer>{
     Optional<Procurador> findOneByEmailAndPassword(String email, String password);
-    Procurador findByEmail(String email);
+    Optional<Procurador> findByEmail(String email);
 }

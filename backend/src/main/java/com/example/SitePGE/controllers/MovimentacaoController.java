@@ -14,7 +14,7 @@ import com.example.SitePGE.repositories.ProcessoRepo;
 import com.example.SitePGE.service.MovimentacaoService;
 
 @RestController
-@RequestMapping("SitePGE/api/processo/{numero_processo}/movimentacoes")
+@RequestMapping("SitePGE/api/home/processo/{numero_processo}/movimentacoes")
 public class MovimentacaoController {
     @Autowired
     private MovimentacaoService movimentacaoService;

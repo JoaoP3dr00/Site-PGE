@@ -1,6 +1,9 @@
 package com.example.SitePGE.entities;
 
 import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,8 +15,8 @@ import lombok.Setter;
 public class Movimentacao {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
-   @Column(name="id")
-   private int id;
+   @Column(name="m_id")
+   private int m_id;
 
    @Column(name="tipo")
    private String tipo;
@@ -25,19 +28,20 @@ public class Movimentacao {
    private Date dataMovimentacao;
 
    @ManyToOne(fetch = FetchType.LAZY)
-   @JoinColumn(name="processo_id")
+   @JoinColumn(name="p_id")
+   @JsonBackReference
    private Processo processo;
 
-   public Movimentacao(int id, String tipo, String descricao, Date dataMovimentacao, Processo processo) {
-       this.id = id;
+   public Movimentacao(int id, String tipo, String descricao, Date dataMovimentacao, Processo processo_id) {
+       this.m_id = id;
        this.tipo = tipo;
        this.descricao = descricao;
        this.dataMovimentacao = dataMovimentacao;
-       this.processo = processo;
+       this.processo = processo_id;
    }
 
-   public int getId() {
-       return id;
+   public int getM_id() {
+       return m_id;
    }
 
    public String getTipo() {
@@ -59,7 +63,7 @@ public class Movimentacao {
    @Override
    public String toString() {
        return "Movimentacao{" +
-               "id=" + id +
+               "id=" + m_id +
                ", tipo='" + tipo + '\'' +
                ", descricao='" + descricao + '\'' +
                ", dataMovimentacao=" + dataMovimentacao +

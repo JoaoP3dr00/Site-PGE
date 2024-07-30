@@ -14,7 +14,7 @@ public class MovimentacaoService {
     
     public String addMovimentacao(Movimentacao movimentacao, Processo processo){
         Movimentacao movimentacao1 = new Movimentacao(
-            movimentacao.getId(),
+            movimentacao.getM_id(),
             movimentacao.getTipo(),
             movimentacao.getDescricao(),
             movimentacao.getDataMovimentacao(),

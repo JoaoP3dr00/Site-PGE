@@ -13,7 +13,6 @@ function Home() {
 
     async function getProcessos(event) {
         event.preventDefault();
-        alert(AuthStr);
         try {
             await axios.get("http://localhost:8080/SitePGE/api/home/processos/procurar-processo-por-numero", {
                     headers: {Authorization: AuthStr},
@@ -51,7 +50,8 @@ function Home() {
             </div>
             
             <ol>
-                <h4>Processos</h4>  
+                <h4>Processos</h4> 
+                 
                 <div>
                     {processos.map((processo) => (
                         <li key={processo.id}>

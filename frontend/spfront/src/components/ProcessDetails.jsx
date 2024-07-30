@@ -4,19 +4,21 @@ import { useParams } from "react-router-dom";
 
 function Process() {
     const [processo, setProcesso] = useState({});
-    const AuthStr = "Bearer ".concat(localStorage.getItem('token').replace(/"/g, '')); 
+    const [movimentacoes, setMovimentacoes] = useState([]);
     const { id } = useParams("");
 
     useEffect(() => {
         async function getData() {
             try {
+                const AuthStr = "Bearer ".concat(localStorage.getItem('token').replace(/"/g, '')); 
                 const response = await axios.get("http://localhost:8080/SitePGE/api/home/processos/processo", {
                     headers: {Authorization: AuthStr},
                     params: { numeroProcesso: id }
                 });
-                if(response.status === 200)
+                if(response.status === 200){
                     setProcesso(response.data);
-                else
+                    setMovimentacoes(Array.isArray(response.data.movimentacoes) ? response.data.movimentacoes : Array.from(response.data.movimentacoes));
+                }else
                     alert(response.status);
             } catch (error) {
                 console.error(error);
@@ -24,7 +26,7 @@ function Process() {
         }
         getData();
     }, [id]);
-
+    
     return (
         <div className="container" >
             <h1>Process{id}</h1>
@@ -42,11 +44,11 @@ function Process() {
                     <p><strong>Tipo de Assunto:</strong> {processo.tipoAssunto}</p>
                     <p><strong>Descrição:</strong> {processo.descricao}</p>
                     <p><strong>Movimentações:</strong></p>
-                    {/* <ul>
-                        {processo.movimentacoes.map((movimentacao, index) => (
-                            <li key={index}>{movimentacao}</li>
-                        ))}
-                    </ul> */}
+                    
+                    {movimentacoes.map((movimentacao) => (
+                        <li key={movimentacao.m_id}>ID: {movimentacao.m_id}</li>
+                    ))}
+                    
             </div>
         </div>
     );

@@ -1,0 +1,2 @@
+ALTER TABLE movimentacao ADD COLUMN fk_numero_processo VARCHAR(255) NOT NULL;
+ALTER TABLE movimentacao ADD CONSTRAINT foreign_key_to_mov FOREIGN KEY (fk_numero_processo) REFERENCES processo(numero_processo) ON DELETE CASCADE;

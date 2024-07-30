@@ -2,6 +2,9 @@ package com.example.SitePGE.entities;
 
 import java.sql.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +16,7 @@ import lombok.Setter;
 public class Processo {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="id")
+    @Column(name="p_id")
     private int id;
 
     @Column(name="numero_processo")
@@ -49,6 +52,7 @@ public class Processo {
     private String descricao;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "processo")
+    @JsonManagedReference
     private List<Movimentacao> movimentacoes;
 
     public Processo(int id, String numeroProcesso, String valorDivida, String juiz, String vara, String executado, Date dataDistribuicao, Date dataPrescricao, String statusPrescricao, String tipoAssunto, String descricao) {
