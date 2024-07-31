@@ -1,0 +1,47 @@
+.pcontainer{
+    width: 1320px;
+    height: 800px;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);;
+}
+
+.pcontainer h1{
+    position: relative;
+    top: 30px;
+    margin: 5px 5px 20px 5px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 550;
+    padding: 0px 0px 20px 0px;
+    border-bottom: 4px solid black;
+}
+
+.button-box{
+    position: relative;
+    top: -80px;
+    right: -10px;
+    height: 50px;
+}
+
+.button-box button{
+    width: 85px;
+    height: 80px;
+    font-size: 20px;
+}
+
+.details{
+    position: relative;
+    right: -50px;
+}
+
+.details h2{
+    position: relative;
+    top: -10px;
+    right: 20px;
+}
+
+.movimentacoes{
+    position: relative;
+    top: -450px;
+    right: -500px;
+}

@@ -12,14 +12,14 @@ export const AuthProvider = ({ children }) => {
   const login = async (data) => {
     setUser(data.name);
     setToken(data.token);
-    navigate("/home");
+    navigate("/SitePGE/home");
   };
 
   // call this function to sign out logged in user
   const logout = () => {
     setUser(null);
     setToken(null);
-    navigate("/login", { replace: true });
+    navigate("/SitePGE/login", { replace: true });
   };
 
   const value = useMemo(
